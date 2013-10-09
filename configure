@@ -14757,6 +14757,14 @@ echo "${ECHO_T}$ac_cv_system_version" >&6
             SHLIB_LD="ld -shared"
         fi
         ;;
+      FreeBSD-1.*)
+                { { echo "$as_me:$LINENO: error: sorry" >&5
+echo "$as_me: error: sorry" >&2;}
+   { (exit no plugins on $ac_cv_system_version); exit no plugins on $ac_cv_system_version; }; }
+        ;;
+      FreeBSD-2.*)
+        SHLIB_LD="ld -Bshareable"
+        ;;
       FreeBSD*)
         SHLIB_CFLAGS="-fPIC"
         SHLIB_LD="$CC -shared"
@@ -14879,7 +14887,7 @@ rm -f conftest.err conftest.$ac_objext \
         ;;
       CYGWIN*)
         SHLIB_SUFFIX=".dll"
-        SHLIB_LD="dllwrap --export-all --output-def \$(PLUGIN_NAME).def --implib lib\$(PLUGIN_NAME).a --driver-name \$(CC)"
+        SHLIB_LD="$CC -shared"
         ;;
       OS/2*)
         SHLIB_SUFFIX=".dll"
@@ -16232,6 +16240,14 @@ echo "${ECHO_T}$ac_cv_system_version" >&6
             SHLIB_LD="ld -shared"
         fi
         ;;
+      FreeBSD-1.*)
+                { { echo "$as_me:$LINENO: error: sorry" >&5
+echo "$as_me: error: sorry" >&2;}
+   { (exit no plugins on $ac_cv_system_version); exit no plugins on $ac_cv_system_version; }; }
+        ;;
+      FreeBSD-2.*)
+        SHLIB_LD="ld -Bshareable"
+        ;;
       FreeBSD*)
         SHLIB_CFLAGS="-fPIC"
         SHLIB_LD="$CC -shared"
@@ -16354,7 +16370,7 @@ rm -f conftest.err conftest.$ac_objext \
         ;;
       CYGWIN*)
         SHLIB_SUFFIX=".dll"
-        SHLIB_LD="dllwrap --export-all --output-def \$(PLUGIN_NAME).def --implib lib\$(PLUGIN_NAME).a --driver-name \$(CC)"
+        SHLIB_LD="$CC -shared"
         ;;
       OS/2*)
         SHLIB_SUFFIX=".dll"
@@ -17236,7 +17252,7 @@ MV="mv -f"
 GZIP_ENV="--best"
 BZIP2="-9 --repetitive-best"
 
-if test -n "$EMXOS2" -o -n "$MINGWIN32"; then
+if test -n "$CYGWIN" -o -n "$EMXOS2" -o -n "$MINGWIN32"; then
   bindir="\$(IRCLIB)"
   INSTALL_IRC="\$(IRCLIB)/\$(_VERSION_)\$(EXEEXT)"
   IRCLIB="\${prefix}/BitchX"
